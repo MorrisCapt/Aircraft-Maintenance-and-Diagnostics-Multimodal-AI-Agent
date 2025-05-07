@@ -33,7 +33,7 @@ app.add_middleware(
 embedding_model_name = "multi-qa-MiniLM-L6-cos-v1"
 embedder = SentenceTransformer(embedding_model_name)
 # API Key
-GROQ_API_KEY = "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 #model = (model_name="mixtral-8x7b", show_progress=True) #Commented out as it's not used and causes an error
 
 # Placeholder for LLM - Replace with actual LLM initialization
@@ -78,7 +78,12 @@ def query_groq(query, document_embeddings, knowledge_base):
 async def startup_event():
     pdf_paths = [
         "aviation_chunk_1.pdf", "aviation_chunk_2.pdf", "aviation_chunk_3.pdf",
-        "aviation_chunk_4.pdf", "aviation_chunk_5.pdf", "aviation_chunk_6.pdf"
+        "aviation_chunk_4.pdf", "aviation_chunk_5.pdf", "aviation_chunk_6.pdf", 
+        "aviation_chunk_7.pdf", "aviation_chunk_8.pdf", "aviation_chunk_9.pdf",
+        "aviation_chunk_10.pdf", "aviation_chunk_11.pdf", "aviation_chunk_12.pdf", 
+        "aviation_chunk_13.pdf", "aviation_chunk_14.pdf", "aviation_chunk_15.pdf",
+        "aviation_chunk_16.pdf", "aviation_chunk_17.pdf", "aviation_chunk_18.pdf", 
+        "aviation_chunk_19.pdf", "aviation_chunk_20.pdf"
     ]
     global knowledge_base
     knowledge_base = load_documents_from_pdfs(pdf_paths)
